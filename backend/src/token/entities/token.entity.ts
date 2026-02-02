@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, Index } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, Index, OneToMany } from 'typeorm';
+import { Log } from '../../log/entities/log.entity';
 
 @Entity('Tokens')
 export class Token {
@@ -20,4 +21,7 @@ export class Token {
 
   @Column({ default: true})
   is_active: boolean;
+
+  @OneToMany(() => Log, (log) => log.token)
+  logs: Log[];
 }
