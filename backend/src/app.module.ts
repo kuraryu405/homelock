@@ -21,11 +21,11 @@ import { Log } from './log/entities/log.entity';
       inject: [ConfigService],
       useFactory: (config: ConfigService) => ({
         type: 'postgres',
-        host: config.get<string>('DB_HOST', 'localhost'),
-        port: config.get<number>('DB_PORT', 5432),
-        username: config.get<string>('DB_USERNAME', 'user'),
-        password: config.get<string>('DB_PASSWORD', 'password'),
-        database: config.get<string>('DB_DATABASE', 'homelock_db'),
+        host: config.get<string>('POSTGRES_HOST', 'localhost'),
+        port: config.get<number>('POSTGRES_PORT', 5432),
+        username: config.get<string>('POSTGRES_USER', 'user'),
+        password: config.get<string>('POSTGRES_PASSWORD', 'password'),
+        database: config.get<string>('POSTGRES_DB', 'homelock_db'),
         entities: [Token, Log],
         synchronize: true, // 開発中は自動でテーブル作成
         logging: true, // SQLの中身をターミナルに表示
